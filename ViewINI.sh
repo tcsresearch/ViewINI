@@ -84,12 +84,12 @@ source "$FUNC_DIR"/"$FUNC_FILE"
 echo "Available sections:"
 echo "-------------------"
 echo " "
-ini_list_sections "$CONFIG_DIR/$CONFIG_FILE" | while read section; do
+ini_list_sections "$CONFIG_DIR/$CONFIG_FILE" | while read -r section; do
 ###    echo "- $section"
 ###    echo " [ $section ]"
     cecho blue " [ $section ]"
 ###    echo "  Keys:"
-    ini_list_keys "$CONFIG_DIR/$CONFIG_FILE" "$section" | while read key; do
+    ini_list_keys "$CONFIG_DIR/$CONFIG_FILE" "$section" | while read -r key; do
         value=$(ini_read "$CONFIG_DIR/$CONFIG_FILE" "$section" "$key")
 ###        echo "  - $key = $value"
 
