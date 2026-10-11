@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2034
+
 # Define Files and Folders.
   CONFIG_DIR="$(pwd)/config/_Old"
 
