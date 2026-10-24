@@ -21,8 +21,17 @@ jobs:
 
     - name: Lint .bfunc files
       run: |
+        # Define Variables #
+          # Find_Excludes="( -path "*/_Old" -o -path "*/plugins" \)"
+          Find_CmdLines="-prune -o -type f"
+          XArgs_CmdLines="-0 -r shellcheck --shell=bash"
+          ShellCheck_Excludes="SC1090,SC2034,SC2154"
+          
         # Find all .bfunc files and run shellcheck on them
         # Using -print0 and xargs -0 handles file names with spaces safely
         ### find . -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash
-        find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash --exclude=SC1090,SC2034,SC2154
-
+        ########## find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash --exclude=SC1090,SC2034,SC2154
+        
+        # VarTest1 #
+        find . \( -path "*/_Old" -o -path "*/plugins" \) $Find_CmdLines -name "*.bfunc" -print0 | xargs $XArgs_CmdLines --exclude=ShellCheck_Excludes
+        
