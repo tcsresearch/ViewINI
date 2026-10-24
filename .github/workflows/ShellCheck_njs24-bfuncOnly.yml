@@ -33,5 +33,5 @@ jobs:
         ########## find . \( -path "*/_Old" -o -path "*/plugins" \) -prune -o -type f -name "*.bfunc" -print0 | xargs -0 -r shellcheck --shell=bash --exclude=SC1090,SC2034,SC2154
         
         # VarTest1 #
-        find . \( -path "*/_Old" -o -path "*/plugins" \) $Find_CmdLines -name "*.bfunc" -print0 | xargs $XArgs_CmdLines --exclude=ShellCheck_Excludes
+        find . \( -path "*/_Old" -o -path "*/plugins" \) $Find_CmdLines -name "*.bfunc" -print0 | xargs $XArgs_CmdLines --exclude=$ShellCheck_Excludes
         
